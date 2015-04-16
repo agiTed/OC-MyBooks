@@ -6,7 +6,7 @@ $app->get('/', function () use ($app) {
     return $app['twig']->render('index.html.twig', array('books' => $books));
 });
 
-// Detailed info about an article
+// Detailed info about a book
 $app->get('/book/{id}', function ($id) use ($app) {
     $book = $app['dao.book']->find($id);
     return $app['twig']->render('book.html.twig', array('book' => $book));
