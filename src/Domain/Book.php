@@ -35,7 +35,7 @@ class Book
     /**
      * Associated author.
      *
-     * @var \MicroCMS\Domain\Author
+     * @var \MyBooks\Domain\Author
      */
     private $author;
 
