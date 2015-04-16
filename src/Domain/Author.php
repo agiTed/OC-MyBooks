@@ -16,14 +16,14 @@ class Author
      *
      * @var string
      */
-    private $firstname;
+    private $firstName;
 
     /**
      * Author last name.
      *
      * @var string
      */
-    private $lastname;
+    private $lastName;
 
     public function getId() {
         return $this->id;
@@ -33,19 +33,19 @@ class Author
         $this->id = $id;
     }
 
-    public function getFirstname() {
-        return $this->firstname;
+    public function getFirstName() {
+        return $this->firstName;
     }
 
-    public function setFirstname($firstname) {
-        $this->firstname = $firstname;
+    public function setFirstName($firstName) {
+        $this->firstName = $firstName;
     }
 
-    public function getLastname() {
-        return $this->lastname;
+    public function getLastName() {
+        return $this->lastName;
     }
 
-    public function setLastname($lastname) {
-        $this->lastname = $lastname;
+    public function setLastName($lastName) {
+        $this->lastName = $lastName;
     }
 }

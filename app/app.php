@@ -14,14 +14,12 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 ));
 
 // Register services.
-$app['dao.book'] = $app->share(function ($app) {
-    return new MyBooks\DAO\BookDAO($app['db']);
+$app['dao.author'] = $app->share(function ($app) {
+    return new MyBooks\DAO\AuthorDAO($app['db']);
 });
 
-/*
-$app['dao.comment'] = $app->share(function ($app) {
-    $commentDAO = new MicroCMS\DAO\CommentDAO($app['db']);
-    $commentDAO->setArticleDAO($app['dao.article']);
-    return $commentDAO;
+$app['dao.book'] = $app->share(function ($app) {
+	$bookDAO = new MyBooks\DAO\BookDAO($app['db']);
+	$bookDAO->setAuthorDAO($app['dao.author']);
+    return $bookDAO;
 });
-*/

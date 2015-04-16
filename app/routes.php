@@ -7,10 +7,7 @@ $app->get('/', function () use ($app) {
 });
 
 // Detailed info about an article
-$app->get('/books/{id}', function ($id) use ($app) {
-	/*
-    $article = $app['dao.article']->find($id);
-    $comments = $app['dao.comment']->findAllByArticle($id);
-    return $app['twig']->render('article.html.twig', array('article' => $article, 'comments' => $comments));
-    */
+$app->get('/book/{id}', function ($id) use ($app) {
+    $book = $app['dao.book']->find($id);
+    return $app['twig']->render('book.html.twig', array('book' => $book));
 });

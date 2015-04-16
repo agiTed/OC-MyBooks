@@ -34,6 +34,23 @@ class BookDAO extends DAO
     }
 
     /**
+     * Returns a book matching the supplied id.
+     *
+     * @param integer $id
+     *
+     * @return \MyBooks\Domain\Book|throws an exception if no matching book is found
+     */
+    public function find($id) {
+        $sql = "select * from book where book_id=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
+
+        if ($row)
+            return $this->buildDomainObject($row);
+        else
+            throw new \Exception("No book matching id " . $id);
+    }
+
+    /**
      * Creates an Book object based on a DB row.
      *
      * @param array $row The DB row containing Book data.
@@ -46,14 +63,10 @@ class BookDAO extends DAO
         $book->setIsbn($row['book_isbn']);
         $book->setSummary($row['book_summary']);
 
-        /*TODO Ajouter l'auteur
-        if (array_key_exists('auth_id', $row)) {
-            // Find and set the associated article
-            $articleId = $row['art_id'];
-            $article = $this->articleDAO->find($articleId);
-            $book->setArticle($article);
-        }
-        */
+        $authorId = $row['auth_id'];
+        $author = $this->authorDAO->find($authorId);
+        $book->setAuthor($author);
+        
         return $book;
     }
 }
